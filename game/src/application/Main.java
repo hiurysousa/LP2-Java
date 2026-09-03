@@ -11,7 +11,7 @@ public class Main {
 
         int opcao = 0;
         do {
-            System.out.println("1 - Cadastrar Jogo Físico");
+            System.out.println("1 - Cadastrar Jogo");
             System.out.println("2 - Exibir Jogos");
             System.out.println("0 - Sair");
             System.out.println("Digite uma opcao: ");
@@ -19,30 +19,54 @@ public class Main {
             sc.nextLine();
             switch(opcao){
                 case 1:
-                    System.out.println("Digite o titulo: ");
-                    String titulo = sc.nextLine();
+                    System.out.println("Físico ou Digital?");
+                    String tipo = sc.nextLine();
+                    if (tipo.equals("Físico")){
+                        System.out.println("Digite o titulo: ");
+                        String titulo = sc.nextLine();
 
-                    System.out.println("Digite o preço: ");
-                    float preco = sc.nextFloat();
+                        System.out.println("Digite o preço: ");
+                        float preco = sc.nextFloat();
 
-                    sc.nextLine();
+                        sc.nextLine();
 
-                    System.out.println("Digite o lote: ");
-                    String lote = sc.nextLine();
+                        System.out.println("Digite o lote: ");
+                        String lote = sc.nextLine();
 
-                    Jogo jogo = new Fisico(titulo, preco, lote);
-                    jogos.add(jogo);
-                    break;
+                        Jogo jogo = new Fisico(titulo, preco, lote);
+                        jogos.add(jogo);
+                        break;
+                    } else if (tipo.equals("Digital")) {
+                        System.out.println("Digite o titulo: ");
+                        String titulo = sc.nextLine();
+
+                        System.out.println("Digite o preço: ");
+                        float preco = sc.nextFloat();
+
+                        sc.nextLine();
+
+                        System.out.println("Digite o codigo: ");
+                        int codigo = sc.nextInt();
+
+                        Jogo jogo = new Digital(titulo, preco, codigo);
+                        jogos.add(jogo);
+                        break;
+                    } else {
+                        System.out.println("OPÇÃO INVÁLIDA.");
+                    }
+
                 case 2:
                     for (int i = 0; i < jogos.size(); i++){
                         jogos.get(i).exibirJogo();
+                        System.out.println("-----------------");
                     }
+                    System.out.println("\n");
                     break;
                 case 0:
-                    System.out.println("Saiu! ");
+                    System.out.println("\nSaiu! ");
                     break;
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println("\nOpção inválida.");
             }
         } while (opcao != 0);
 
